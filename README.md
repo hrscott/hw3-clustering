@@ -1,6 +1,8 @@
 # Project 5
 Implementation of KMeans and Silhouette Scoring
 
+#Note one unit test (sklearn comaprison) has been anticipated to fail here on account of slight but notable variation with the exact values from sklearn's Kmeans implementation
+
 # Assignment
 
 ## Overview
