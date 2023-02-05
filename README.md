@@ -64,7 +64,7 @@ kmeans = Kmeans(K=3)
 kmeans.fit(t_clusters)
 
 # Predict the cluster labels for each observation
-labels = kmeans.predict(l_clusters)
+labels = kmeans.predict(t_clusters)
 
 kmeans = Kmeans(K=4)
 kmeans.fit(t_clusters)
