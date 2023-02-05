@@ -10,7 +10,6 @@ def make_clusters(
         seed: int = 42) -> (np.ndarray, np.ndarray):
     """
     creates some clustered data
-
     inputs:
         n: int
             number of observations
@@ -24,7 +23,6 @@ def make_clusters(
             standard deviation of normal distribution
         seed: int
             random seed
-
     outputs:
         (np.ndarray, np.ndarray)
             returns a 2D matrix of `n` observations and `m` features that are clustered into `k` groups
@@ -80,7 +78,6 @@ def plot_multipanel(
     """
     Plots a multipanel figure visualizing the efficiency of truth, prediction, 
     and silhouette scoring on a provided dataset
-
     inputs:
         mat: np.ndarray
             a 2D matrix where each row is an observation and each column is a feature
@@ -114,4 +111,3 @@ def plot_multipanel(
         plt.savefig(filename)
     else:
         plt.show()
-
