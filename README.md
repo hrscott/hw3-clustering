@@ -52,18 +52,28 @@ Building up your models with this in mind will allow for easy integration of sub
 
 While these methods are the only ones we are _requiring_ we highly recommend you create more private methods for specific subtasks within your implementation. 
 
-### Example Usage
+### Example Usage using t_clusters sample data generated from utils.py  generate_clusters function
 ```python3
-# instantiation of model with some params
-kmeans = KMeans(*args, **kwargs)
-silhouette = Silhouette(*args, **kwargs)
+import numpy as np
+from scipy.spatial.distance import cdist
 
-# fit the model using some input data
-kmeans.fit(input_data)
+# Create KMeans model
+kmeans = Kmeans(K=3)
 
-# predict the labels on some input data
-labels = kmeans.predict(input_data)
-scores = silhouette.score(labels)
+# Fit the model to the data
+kmeans.fit(t_clusters)
+
+# Predict the cluster labels for each observation
+labels = kmeans.predict(l_clusters)
+
+kmeans = Kmeans(K=4)
+kmeans.fit(t_clusters)
+labels = kmeans.predict(t_clusters)
+
+# calculate average silhouette score
+sil = Silhouette()
+avg_score = sil.avg_score(t_clusters, labels)
+print(avg_score)
 ```
 
 ## Tasks
