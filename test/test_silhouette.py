@@ -4,18 +4,34 @@ from scipy.spatial.distance import cdist
 import cluster
 
 
-# Test 1: Check if silhouette scores are correctly calculated
-X = np.array([[1,2],[2,3],[3,3],[3,2],[1,1]])
-y = np.array([0,0,1,1,2])
-sil = cluster.Silhouette()
-scores = sil.score(X, y)
-expected_scores = np.array([0.63, 0.63, -0.22, -0.22, 1.00])
-assert np.allclose(scores, expected_scores, atol=1e-2), f"Expected {expected_scores}, but got {scores}"
+# Check if silhouette scores are correctly calculated
+def test_Silhouette_score():
+    silhouette = cluster.Silhouette()
 
-# Test 2: Check if average silhouette score is correctly calculated
-X = np.array([[1,2],[2,3],[3,3],[3,2],[1,1]])
-y = np.array([0,0,1,1,2])
-sil = cluster.Silhouette()
-avg_score = sil.avg_score(X, y)
-expected_avg_score = "Average silhouette score: 0.395"
-assert avg_score == expected_avg_score, f"Expected {expected_avg_score}, but got {avg_score}"
+    X = np.array([[1, 2], [3, 4], [5, 6]])
+    y = np.array([0, 1, 1])
+    expected = np.array([0.854, 0.276, 0.276])
+    result = silhouette.score(X, y)
+    assert np.allclose(result, expected, atol=1e-3)
+
+    X = np.array([[1, 2, 3], [4, 5, 6]])
+    y = np.array([0, 1])
+    expected = np.array([0.000, 0.000])
+    result = silhouette.score(X, y)
+    assert np.allclose(result, expected, atol=1e-3)
+
+# Check if average silhouette score is correctly calculated
+def test_Silhouette_avg_score():
+    silhouette = cluster.Silhouette()
+
+    X = np.array([[1, 2], [3, 4], [5, 6]])
+    y = np.array([0, 1, 1])
+    expected = "Average silhouette score: 0.449"
+    result = silhouette.avg_score(X, y)
+    assert result == expected
+
+    X = np.array([[1, 2, 3], [4, 5, 6]])
+    y = np.array([0, 1])
+    expected = "Average silhouette score: 0.000"
+    result = silhouette.avg_score(X, y)
+    assert result == expected
