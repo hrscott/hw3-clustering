@@ -11,7 +11,7 @@ def test_silhouette_score_returns_correct_shape():
     scores = silhou.score(X, y)
     assert scores.shape == (3,)
     
-    
+#testing to see whether avg_score function returns intended format 
 def test_avg_score_result_format():
     silhouette = cluster.Silhouette()
     X = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
