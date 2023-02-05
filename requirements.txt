@@ -1,4 +1,6 @@
+pip
 pytest
 numpy
 scipy
 matplotlib
+sklearn
